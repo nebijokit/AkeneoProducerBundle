@@ -17,6 +17,7 @@ final class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->scalarNode('scope')->defaultValue('ecommerce')->end()
                 ->arrayNode('locales')
                     ->prototype('scalar')->end()
                     ->performNoDeepMerging()

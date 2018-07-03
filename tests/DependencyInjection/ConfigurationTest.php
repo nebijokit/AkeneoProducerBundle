@@ -52,4 +52,39 @@ final class ConfigurationTest extends TestCase
             'locales'
         );
     }
+
+    /**
+     * @test
+     */
+    public function it_specifies_default_supported_scope()
+    {
+        $this->assertProcessedConfigurationEquals([[]], ['scope' => 'ecommerce'], 'scope');
+    }
+
+    /**
+     * @test
+     */
+    public function its_supported_scope_can_be_changed()
+    {
+        $this->assertProcessedConfigurationEquals(
+            [['scope' => 'e-commerce']],
+            ['scope' => 'e-commerce'],
+            'scope'
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function its_supported_scope_can_be_overwritten()
+    {
+        $this->assertProcessedConfigurationEquals(
+            [
+                ['scope' => 'ecommerce'],
+                ['scope' => 'e-commerce']
+            ],
+            ['scope' => 'e-commerce'],
+            'scope'
+        );
+    }
 }

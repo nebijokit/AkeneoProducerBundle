@@ -32,21 +32,29 @@ use Akeneo\Component\Batch\Job\JobParameters\DefaultValuesProviderInterface;
     private $locales;
 
     /**
+     * @var string
+     */
+    private $scope;
+
+    /**
      * @param DefaultValuesProviderInterface $baseDefaultValuesProvider
      * @param ConstraintCollectionProviderInterface $baseConstraintCollectionProvider
      * @param string[] $supportedJobNames
      * @param string[] $locales
+     * @param string $scope
      */
     public function __construct(
         DefaultValuesProviderInterface $baseDefaultValuesProvider,
         ConstraintCollectionProviderInterface $baseConstraintCollectionProvider,
         array $supportedJobNames,
-        array $locales
+        array $locales,
+        string $scope
     ) {
         $this->baseDefaultValuesProvider = $baseDefaultValuesProvider;
         $this->baseConstraintCollectionProvider = $baseConstraintCollectionProvider;
         $this->supportedJobNames = $supportedJobNames;
         $this->locales = $locales;
+        $this->scope = $scope;
     }
 
     /**
@@ -65,7 +73,7 @@ use Akeneo\Component\Batch\Job\JobParameters\DefaultValuesProviderInterface;
                     ]
                 ],
                 'structure' => [
-                    'scope' => 'ecommerce',
+                    'scope' => $this->scope,
                     'locales' => $this->locales
                 ],
             ],

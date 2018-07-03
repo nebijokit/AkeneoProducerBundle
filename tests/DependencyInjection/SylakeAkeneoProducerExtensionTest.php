@@ -26,4 +26,16 @@ final class SylakeAkeneoProducerExtensionTest extends AbstractExtensionTestCase
 
         $this->assertContainerBuilderHasParameter('sylake_akeneo_producer.config.locales', ['pl_PL']);
     }
+
+    /**
+     * @test
+     */
+    public function it_stores_supported_scope_as_a_parameter()
+    {
+        $this->load(['scope' => 'e-commerce']);
+
+        $this->compile();
+
+        $this->assertContainerBuilderHasParameter('sylake_akeneo_producer.config.scope', 'e-commerce');
+    }
 }
