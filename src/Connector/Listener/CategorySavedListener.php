@@ -4,6 +4,7 @@ namespace Sylake\AkeneoProducerBundle\Connector\Listener;
 
 use Akeneo\Component\Classification\Model\CategoryInterface;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
+use Pim\Component\Catalog\Model\CategoryTranslationInterface;
 use Sylake\AkeneoProducerBundle\Connector\ItemSetInterface;
 
 final class CategorySavedListener
@@ -29,6 +30,10 @@ final class CategorySavedListener
     public function __invoke(LifecycleEventArgs $event)
     {
         $category = $event->getObject();
+
+        if ($category instanceof CategoryTranslationInterface) {
+            $category = $category->getForeignKey();
+        }
 
         if (!$category instanceof CategoryInterface) {
             return;
