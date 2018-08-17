@@ -34,7 +34,7 @@
                  supported-class="\Pim\Component\Catalog\Model\AttributeOptionInterface" />
         </service>
 
-        <service id="sylake_akeneo_producer.connector.projector.family"
+        <service id="sylake_akeneo_producer.connector.projector.category"
                  class="Sylake\AkeneoProducerBundle\Connector\Projector\ItemProjector">
             <argument type="service" id="pim_connector.processor.normalization.category" />
             <argument type="service" id="sylake_akeneo_producer.connector.writer.rabbit_mq.category" />
@@ -43,7 +43,8 @@
                  supported-class="\Akeneo\Component\Classification\Model\CategoryInterface" />
         </service>
 
-        <service class="Sylake\AkeneoProducerBundle\Connector\Projector\ItemProjector">
+        <service id="sylake_akeneo_producer.connector.projector.family"
+                 class="Sylake\AkeneoProducerBundle\Connector\Projector\ItemProjector">
             <argument type="service" id="pim_connector.processor.normalization.family" />
             <argument type="service" id="sylake_akeneo_producer.connector.writer.rabbit_mq.family" />
             <argument type="service" id="sylake_akeneo_producer.connector.job_parameters" />
@@ -87,7 +88,7 @@
         <service id="sylake_akeneo_producer.connector.listener.attribute_saved"
                  class="Sylake\AkeneoProducerBundle\Connector\Listener\AttributeSavedListener">
             <argument type="service" id="sylake_akeneo_producer.connector.item_set" />
-            <tag name="kernel.event_listener" event="akeneo.storage.post_save" method="__invoke" priority="1024" />
+            <tag name="kernel.event_listener" event="akeneo.storage.post_save" method="__invoke" priority="1048" />
         </service>
 
         <service id="sylake_akeneo_producer.connector.listener.category_saved"
