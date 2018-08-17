@@ -1,81 +1,92 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
+
+        <service id="sylake_akeneo_producer.connector.job.attribute" class="%pim_connector.step.item_step.class%">
+            <argument>publish_attribute_step</argument>
+            <argument type="service" id="event_dispatcher" />
+            <argument type="service" id="akeneo_batch.job_repository" />
+            <argument type="service" id="pim_connector.reader.database.attribute" />
+            <argument type="service" id="pim_connector.processor.normalization.attribute" />
+            <argument type="service" id="sylake_akeneo_producer.connector.writer.rabbit_mq.attribute" />
+        </service>
+
+        <service id="sylake_akeneo_producer.connector.job.attribute_option" class="%pim_connector.step.item_step.class%">
+            <argument>publish_attribute_option_step</argument>
+            <argument type="service" id="event_dispatcher" />
+            <argument type="service" id="akeneo_batch.job_repository" />
+            <argument type="service" id="pim_connector.reader.database.attribute_option" />
+            <argument type="service" id="pim_connector.processor.normalization.attribute_option" />
+            <argument type="service" id="sylake_akeneo_producer.connector.writer.rabbit_mq.attribute_option" />
+        </service>
+
+        <service id="sylake_akeneo_producer.connector.job.association_type" class="%pim_connector.step.item_step.class%">
+            <argument>publish_association_type_step</argument>
+            <argument type="service" id="event_dispatcher" />
+            <argument type="service" id="akeneo_batch.job_repository" />
+            <argument type="service" id="pim_connector.reader.database.association_type" />
+            <argument type="service" id="pim_connector.processor.normalization.association_type" />
+            <argument type="service" id="sylake_akeneo_producer.connector.writer.rabbit_mq.association_type" />
+        </service>
+
+        <service id="sylake_akeneo_producer.connector.job.category" class="%pim_connector.step.item_step.class%">
+            <argument>publish_category_step</argument>
+            <argument type="service" id="event_dispatcher" />
+            <argument type="service" id="akeneo_batch.job_repository" />
+            <argument type="service" id="pim_connector.reader.database.category" />
+            <argument type="service" id="pim_connector.processor.normalization.category" />
+            <argument type="service" id="sylake_akeneo_producer.connector.writer.rabbit_mq.category" />
+        </service>
+
+        <service id="sylake_akeneo_producer.connector.job.family" class="%pim_connector.step.item_step.class%">
+            <argument>publish_family_step</argument>
+            <argument type="service" id="event_dispatcher" />
+            <argument type="service" id="akeneo_batch.job_repository" />
+            <argument type="service" id="pim_connector.reader.database.family" />
+            <argument type="service" id="pim_connector.processor.normalization.family" />
+            <argument type="service" id="sylake_akeneo_producer.connector.writer.rabbit_mq.family" />
+        </service>
+
+        <service id="sylake_akeneo_producer.connector.job.group" class="%pim_connector.step.item_step.class%">
+            <argument>publish_group_step</argument>
+            <argument type="service" id="event_dispatcher" />
+            <argument type="service" id="akeneo_batch.job_repository" />
+            <argument type="service" id="pim_connector.reader.database.group" />
+            <argument type="service" id="pim_connector.processor.normalization.group" />
+            <argument type="service" id="sylake_akeneo_producer.connector.writer.rabbit_mq.group" />
+        </service>
+
+        <service id="sylake_akeneo_producer.connector.job.product" class="%pim_connector.step.item_step.class%">
+            <argument>publish_product_step</argument>
+            <argument type="service" id="event_dispatcher" />
+            <argument type="service" id="akeneo_batch.job_repository" />
+            <argument type="service" id="pim_connector.reader.database.product" />
+            <argument type="service" id="pim_connector.processor.normalization.product" />
+            <argument type="service" id="sylake_akeneo_producer.connector.writer.rabbit_mq.product" />
+        </service>
+
         <service id="sylake_akeneo_producer.connector.job" class="%pim_connector.job.simple_job.class%">
             <argument>sylake_akeneo_producer</argument>
             <argument type="service" id="event_dispatcher" />
             <argument type="service" id="akeneo_batch.job_repository" />
             <argument type="collection">
-                <argument type="service">
-                    <service class="%pim_connector.step.item_step.class%">
-                        <argument>publish_attribute_step</argument>
-                        <argument type="service" id="event_dispatcher" />
-                        <argument type="service" id="akeneo_batch.job_repository" />
-                        <argument type="service" id="pim_connector.reader.database.attribute" />
-                        <argument type="service" id="pim_connector.processor.normalization.attribute" />
-                        <argument type="service" id="sylake_akeneo_producer.connector.writer.rabbit_mq.attribute" />
-                    </service>
-                </argument>
-                <argument type="service">
-                    <service class="%pim_connector.step.item_step.class%">
-                        <argument>publish_attribute_option_step</argument>
-                        <argument type="service" id="event_dispatcher" />
-                        <argument type="service" id="akeneo_batch.job_repository" />
-                        <argument type="service" id="pim_connector.reader.database.attribute_option" />
-                        <argument type="service" id="pim_connector.processor.normalization.attribute_option" />
-                        <argument type="service" id="sylake_akeneo_producer.connector.writer.rabbit_mq.attribute_option" />
-                    </service>
-                </argument>
-                <argument type="service">
-                    <service class="%pim_connector.step.item_step.class%">
-                        <argument>publish_association_type_step</argument>
-                        <argument type="service" id="event_dispatcher" />
-                        <argument type="service" id="akeneo_batch.job_repository" />
-                        <argument type="service" id="pim_connector.reader.database.association_type" />
-                        <argument type="service" id="pim_connector.processor.normalization.association_type" />
-                        <argument type="service" id="sylake_akeneo_producer.connector.writer.rabbit_mq.association_type" />
-                    </service>
-                </argument>
-                <argument type="service">
-                    <service class="%pim_connector.step.item_step.class%">
-                        <argument>publish_category_step</argument>
-                        <argument type="service" id="event_dispatcher" />
-                        <argument type="service" id="akeneo_batch.job_repository" />
-                        <argument type="service" id="pim_connector.reader.database.category" />
-                        <argument type="service" id="pim_connector.processor.normalization.category" />
-                        <argument type="service" id="sylake_akeneo_producer.connector.writer.rabbit_mq.category" />
-                    </service>
-                </argument>
-                <argument type="service">
-                    <service class="%pim_connector.step.item_step.class%">
-                        <argument>publish_family_step</argument>
-                        <argument type="service" id="event_dispatcher" />
-                        <argument type="service" id="akeneo_batch.job_repository" />
-                        <argument type="service" id="pim_connector.reader.database.family" />
-                        <argument type="service" id="pim_connector.processor.normalization.family" />
-                        <argument type="service" id="sylake_akeneo_producer.connector.writer.rabbit_mq.family" />
-                    </service>
-                </argument>
-                <argument type="service">
-                    <service class="%pim_connector.step.item_step.class%">
-                        <argument>publish_group_step</argument>
-                        <argument type="service" id="event_dispatcher" />
-                        <argument type="service" id="akeneo_batch.job_repository" />
-                        <argument type="service" id="pim_connector.reader.database.group" />
-                        <argument type="service" id="pim_connector.processor.normalization.group" />
-                        <argument type="service" id="sylake_akeneo_producer.connector.writer.rabbit_mq.group" />
-                    </service>
-                </argument>
-                <argument type="service">
-                    <service class="%pim_connector.step.item_step.class%">
-                        <argument>publish_product_step</argument>
-                        <argument type="service" id="event_dispatcher" />
-                        <argument type="service" id="akeneo_batch.job_repository" />
-                        <argument type="service" id="pim_connector.reader.database.product" />
-                        <argument type="service" id="pim_connector.processor.normalization.product" />
-                        <argument type="service" id="sylake_akeneo_producer.connector.writer.rabbit_mq.product" />
-                    </service>
-                </argument>
+                <argument type="service" id="sylake_akeneo_producer.connector.job.attribute" />
+                <argument type="service" id="sylake_akeneo_producer.connector.job.attribute_option" />
+                <argument type="service" id="sylake_akeneo_producer.connector.job.association_type" />
+                <argument type="service" id="sylake_akeneo_producer.connector.job.category" />
+                <argument type="service" id="sylake_akeneo_producer.connector.job.family" />
+                <argument type="service" id="sylake_akeneo_producer.connector.job.group" />
+                <argument type="service" id="sylake_akeneo_producer.connector.job.product" />
+            </argument>
+            <tag name="akeneo_batch.job" connector="AkeneoProducerBundle connector" type="%pim_connector.job.export_type%" />
+        </service>
+
+        <service id="sylake_akeneo_producer.connector.job.export_product" class="%pim_connector.job.simple_job.class%">
+            <argument>sylake_akeneo_export_product</argument>
+            <argument type="service" id="event_dispatcher" />
+            <argument type="service" id="akeneo_batch.job_repository" />
+            <argument type="collection">
+                <argument type="service" id="sylake_akeneo_producer.connector.job.product" />
             </argument>
             <tag name="akeneo_batch.job" connector="AkeneoProducerBundle connector" type="%pim_connector.job.export_type%" />
         </service>
@@ -86,6 +97,7 @@
             <argument type="service" id="pim_connector.job.job_parameters.constraint_collection_provider.product_csv_export" />
             <argument type="collection">
                 <argument>sylake_akeneo_producer</argument>
+                <argument>sylake_akeneo_export_product</argument>
             </argument>
             <argument>%sylake_akeneo_producer.config.locales%</argument>
             <tag name="akeneo_batch.job.job_parameters.default_values_provider" />
@@ -95,6 +107,7 @@
         <service class="%pim_enrich.provider.form.job_instance.class%">
             <argument type="collection">
                 <argument key="sylake_akeneo_producer">pim-job-instance-sylake-akeneo-producer</argument>
+                <argument key="sylake_akeneo_export_product">pim-job-instance-sylake-akeneo-export-product</argument>
             </argument>
             <tag name="pim_enrich.provider.form" />
         </service>
